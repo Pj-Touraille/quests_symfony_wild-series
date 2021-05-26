@@ -42,15 +42,16 @@ class CategoryController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(['name' => $categoryName]);
 
-        $programs = $this->getDoctrine()
-        ->getRepository(Program::class)
-        ->findBy(['category' => $category->getId()], ['id' => 'desc'], 3);
-
-        if (!$programs) {
+            
+        if (!$category) {
             throw $this->createNotFoundException(
-                'No programs with category: ' . $categoryName . ' found in program\'s table.'
+                'No category with name: ' . $categoryName . ' found in category\'s table.'
             );
         }
+        
+        $programs = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findBy(['category' => $category->getId()], ['id' => 'desc'], 3);
 
         return $this->render(
             'category/show.html.twig',
