@@ -14,7 +14,8 @@
 					{{ program.category.name }}</p>
 			</div>
 			<a href="{{ path("program_show", { id: program.id }) }}">
-				<img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+				{# <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster"> #}
+				<p>{{ program.title }}</p>
 			</a>
 		</div>
 	{% else %}
@@ -22,7 +23,7 @@
 	{% endfor %}
 
 	<a href="{{ path('category_index') }}">
-		Retour à la liste des programmes
+		Retour à la liste des catégories
 	</a>
 
 {% endblock %}

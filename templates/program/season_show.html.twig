@@ -14,20 +14,20 @@
 				<p>Catégorie :
 					{{ program.category.name }}</p>
 			</a>
-			{% for season in seasons %}
-				<a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">
-					<p>{{ season.number }} / {{ season.description }}</p>
-				</a>
+			<h3 class="mt-0">{{ season.description }}</h3>
+			{% for episode in season.episodes %}
+				<h6>Episode {{ episode.number }} - {{ episode.title }}</h6>
+				<p>{{ episode.synopsis }}</p>
 			{% else %}
 				<p>
-					Il n'y a actuellement aucune saison disponible pour cette série.
+					Il n'y a actuellement aucun épisode disponible pour cette saison.
 				</p>
 			{% endfor %}
 		</div>
 	</div>
 
-	<a href="{{ path('program_index') }}">
-		Retour à la liste des programmes
+	<a href="{{ path("program_show", { id: program.id }) }}">
+		Retour à la liste des saisons
 	</a>
 
 {% endblock %}
