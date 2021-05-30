@@ -12,12 +12,12 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     const PROGRAM = [
         [
             'title' => 'Black mirror',
-            'summary' => "Les épisodes sont liés par le thème commun de la mise en œuvre d'une technologie dystopique. Le titre « Black Mirror » fait référence aux écrans omniprésents qui nous renvoient notre reflet. Sous un angle noir et souvent satirique, la série envisage un futur proche, voire immédiat. Elle interroge les conséquences inattendues que pourraient avoir les nouvelles technologies, et comment ces dernières influent sur la nature humaine de ses utilisateurs et inversement",
+            'summary' => "Les épisodes sont liés par le thème commun de la mise en œuvre d'une technologie dystopique.",
             'poster' => "black-mirror.png",
             'category' => 'Fantastique'],
         [
             'title' => 'La ligue des justiciers',
-            'summary' => "Les plus grands super-héros du monde, menés par Superman, Batman, Green Lantern, Wonder Woman, Martian Manhunter, Flash et Hawkgirl collaborent avec le soutien de leurs amis pour lutter plus efficacement contre la criminalité grandissante et les nouvelles menaces d'invasions extra-terrestres. Gardiens de la justice, ils sont le dernier rempart pour déjouer les conspirations les plus machiavéliques.",
+            'summary' => "Les plus grands super-héros du monde, menés par Superman, Batman, Green Lantern, Wonder Woman, Martian Manhunter, Flash et Hawkgirl collaborent avec le soutien de leurs amis pour lutter plus efficacement contre la criminalité grandissante et les nouvelles menaces d'invasions extra-terrestres.",
             'poster' => "justice-league.png",
             'category' => 'Animation']
     ];

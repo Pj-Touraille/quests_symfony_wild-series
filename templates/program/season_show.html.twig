@@ -16,7 +16,9 @@
 			</a>
 			<h3 class="mt-0">{{ season.description }}</h3>
 			{% for episode in season.episodes %}
-				<h6>Episode {{ episode.number }} - {{ episode.title }}</h6>
+				<a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">
+					<h6>Episode {{ episode.number }} - {{ episode.title }}</h6>
+				</a>
 				<p>{{ episode.synopsis }}</p>
 			{% else %}
 				<p>
