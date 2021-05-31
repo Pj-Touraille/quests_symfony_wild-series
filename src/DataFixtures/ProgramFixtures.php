@@ -14,12 +14,21 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'title' => 'Black mirror',
             'summary' => "Les épisodes sont liés par le thème commun de la mise en œuvre d'une technologie dystopique.",
             'poster' => "black-mirror.png",
-            'category' => 'Fantastique'],
+            'category' => 'Fantastique',
+            'actors' => [
+                'Norman Reedus',
+                'Andrew Lincoln',
+                'Lauren Cohan'
+            ]],
         [
             'title' => 'La ligue des justiciers',
             'summary' => "Les plus grands super-héros du monde, menés par Superman, Batman, Green Lantern, Wonder Woman, Martian Manhunter, Flash et Hawkgirl collaborent avec le soutien de leurs amis pour lutter plus efficacement contre la criminalité grandissante et les nouvelles menaces d'invasions extra-terrestres.",
             'poster' => "justice-league.png",
-            'category' => 'Animation']
+            'category' => 'Animation',
+            'actors' => [
+                'Jeffrey Dean Morgan',
+                'Chandler Riggs'
+            ]]
     ];
 
     public function load(ObjectManager $manager)
@@ -30,6 +39,13 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSummary($programs['summary']);
             $program->setPoster($programs['poster']);
             $program->setCategory($this->getReference($programs['category']));
+            foreach (ActorFixtures::ACTORS as $actorName) {
+                foreach ($programs['actors'] as $actor) {
+                    if ($actor === $actorName) {
+                        $program->addActor($this->getReference($actorName));
+                    }
+                }
+            }
             $manager->persist($program);
             $this->addReference($programs['title'], $program);
         }
@@ -40,6 +56,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CategoryFixtures::class,
+            ActorFixtures::class
         ];
     }
 }

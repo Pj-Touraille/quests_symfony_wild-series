@@ -14,7 +14,6 @@
 				- Catégorie :
 				{{ program.category.name }}</h2>
 			<p>{{ program.summary }}</p>
-			{# Lien vers la fiche de la série : #}
 			<a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
 		</div>
 	{% else %}
