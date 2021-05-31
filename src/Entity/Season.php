@@ -6,9 +6,13 @@ use App\Repository\SeasonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=SeasonRepository::class)
+ * @Assert\EnableAutoMapping()
+ * @UniqueEntity("number", message="This number is already in use on that season.")
  */
 class Season
 {
@@ -27,6 +31,7 @@ class Season
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Oh non, ne me laise pas tout vide")
      */
     private $number;
 
