@@ -5,10 +5,10 @@
 
 {% block body %}
 
-	{% for program in programs %}
+	{% for program in category.programs %}
 		<div class="media">
 			<div class="media-body">
-				<h1 class="mt-0">{{ loop.index }} : {{ program.title }}</h1>
+				<h1 class="mt-0">{{ program.id }} : {{ program.title }}</h1>
 				<p>{{ program.summary }}</p>
 				<p>Catégorie :
 					{{ program.category.name }}</p>
