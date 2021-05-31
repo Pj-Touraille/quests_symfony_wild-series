@@ -16,13 +16,29 @@
 			</a>
 			{% for season in program.seasons %}
 				<a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}">
-					<p>{{ season.number }} / {{ season.description }}</p>
+					<p>{{ season.number }}
+						/
+						{{ season.description }}</p>
 				</a>
 			{% else %}
 				<p>
 					Il n'y a actuellement aucune saison disponible pour cette série.
 				</p>
 			{% endfor %}
+			<strong>Acteurs :</strong>
+			<ul>
+				<pre>
+					{{ dump(program) }}
+				</pre>
+				{% for actor in program.actors %}
+					<li><a href="{{ path("actor_show", { id: actor.id }) }}">
+							{{ actor.name }}
+						</a>
+					</li>
+				{% else %}
+					<li>Aucun acteur pour cette série</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 

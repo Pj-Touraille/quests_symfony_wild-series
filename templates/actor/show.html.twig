@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Série #{{ actor.name }}
+{% endblock %}
+
+{% block body %}
+
+	<pre>
+		{{ dump(actor) }}
+	</pre>
+
+	<div class="media">
+		<div class="media-body">
+			<h1 class="mt-0">
+				{{ actor.id }}
+				/
+				{{ actor.name }}
+			</h1>
+			<ul>
+				{% for program in actor.programs %}
+					<li>
+						<a href="{{ path("program_show", { id: program.id }) }}">
+							{{ program.title }}
+						</a>
+					</li>
+
+				{% else %}
+					<li>Aucune série pour cet(te) acteur/actrice</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<a href="{{ path('actor_index') }}">
+		Retour à la liste des acteurs/actrices
+	</a>
+
+{% endblock %}
