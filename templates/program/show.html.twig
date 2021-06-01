@@ -15,7 +15,7 @@
 					{{ program.category.name }}</p>
 			</a>
 			{% for season in program.seasons %}
-				<a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}">
+				<a href="{{ path("program_season_show", { slug: program.slug, season: season.id }) }}">
 					<p>{{ season.number }}
 						/
 						{{ season.description }}</p>
