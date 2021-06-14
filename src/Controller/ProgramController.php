@@ -15,7 +15,7 @@ use App\Service\Slugify;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
-* @Route("/programs", name="program_")
+* @Route("/program", name="program_")
 */
 class ProgramController extends AbstractController
 {
@@ -44,25 +44,17 @@ class ProgramController extends AbstractController
      */
     public function new(Request $request, Slugify $slugify) : Response
     {
-        // Create a new Category Object
         $program = new Program();
-        // Create the associated Form
         $form = $this->createForm(ProgramType::class, $program);
-        // Get data from HTTP request
         $form->handleRequest($request);
-        // Was the form submitted ?
-        if ($form->isSubmitted()) {
-            /// Deal with the submitted data
-            // Get the Entity Manager
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            // Correct the value with slugify
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
-            // Persist Category Object
             $entityManager->persist($program);
-            // Flush the persisted object
             $entityManager->flush();
-            // Finally redirect to categories list
+
             return $this->redirectToRoute('category_index');
         }
         // Render the form
